@@ -73,7 +73,11 @@
     </nav>
     <div class="container mt-3">
         @yield('konten')
+
     </div>
+        <div class="footer mt-5 border-top py-4 bg-dark text-white shadow text-center">
+        &copy; 2022 build with <i class="fa-solid fa-heart text-danger"></i>
+        </div>
 </body>
 
 </html>

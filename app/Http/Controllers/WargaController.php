@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Warga;
+use App\Exports\WargaExport;
+use App\Imports\WargaImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WargaController extends Controller
 {
@@ -75,7 +78,6 @@ class WargaController extends Controller
         ]);
     }
 
-
     public function update(Request $request)
     {
         // validasi input
@@ -117,4 +119,38 @@ class WargaController extends Controller
             'message' => $message
         ]);
     }
+
+    public function exportExcel()
+	{
+		return Excel::download(new WargaExport, 'warga.xlsx');
+	}
+
+    public function importExcel(Request $request)
+	{
+		// validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+
+		// menangkap file excel
+		$file = $request->file('file');
+
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+
+		// upload ke folder file_warga di dalam folder public
+		$file->move('file_warga',$nama_file);
+
+		// import data
+		Excel::import(new WargaImport, public_path('/file_warga/'.$nama_file));
+
+		// notifikasi sukses
+		$message = '<div class="alert alert-success" role="alert">
+                            Data warga berhasil di import!
+                        </div>';
+        return redirect()->route('warga')->with([
+            'title' => 'Warga',
+            'message' => $message
+        ]);
+	}
 }

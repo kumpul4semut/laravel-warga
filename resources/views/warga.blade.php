@@ -3,8 +3,14 @@
 @section('konten')
     <div class="row my-3">
         <div class="col">
-            <button type="button" class="btn btn-primary btn-md float-right" data-toggle="modal" data-target="#tambah"><i
-                    class="fa-solid fa-plus"></i> Tambah</button>
+            <div class="d-flex float-right justify-content-around">
+                <a href="warga/export_excel" class="btn btn-success btn-md mr-3" target="_blank"><i
+                        class="fa-solid fa-file-excel"></i> Export</a>
+                <button type="button" class="btn btn-secondary btn-md mr-3" data-toggle="modal" data-target="#import"><i
+                        class="fa-solid fa-file-excel"></i> Import</button>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#tambah"><i
+                        class="fa-solid fa-plus"></i> Tambah</button>
+            </div>
         </div>
     </div>
 
@@ -240,6 +246,33 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-link" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Import-->
+    <div class="modal fade" id="import" tabindex="-1" aria-labelledby="importLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="import">Import Warga</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('wargaImportExcel') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="file">Pilih File Excel</label>
+                            <input type="file" name="file" id="file" required="required">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
                     </div>
                 </form>
             </div>

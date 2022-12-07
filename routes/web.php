@@ -29,3 +29,5 @@ Route::get('warga', [WargaController::class, 'index'])->name('warga')->middlewar
 Route::post('warga', [WargaController::class, 'store'])->name('wargaStore')->middleware('auth');
 Route::put('warga', [WargaController::class, 'update'])->name('wargaUpdate')->middleware('auth');
 Route::delete('warga', [WargaController::class, 'drop'])->name('wargaDrop')->middleware('auth');
+Route::get('warga/export_excel', [WargaController::class, 'exportExcel'])->name('wargaExportExcel')->middleware('auth');
+Route::post('warga/import_excel', [WargaController::class, 'importExcel'])->name('wargaImportExcel')->middleware('auth');
