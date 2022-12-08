@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item {{ Request::segment(1) === 'home' ? 'active' : '' }} ">
-                        <a class="nav-link" href="{{ route('home') }}">Home </a>
+                        <a class="nav-link" href="{{ route('home') }}">Dashboard </a>
                     </li>
                     <li class="nav-item {{ Request::segment(1) === 'warga' ? 'active' : '' }} ">
                         <a class="nav-link" href="{{ route('warga') }}">Warga </a>

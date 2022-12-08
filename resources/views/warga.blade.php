@@ -2,6 +2,7 @@
 
 @section('konten')
     <div class="row my-3">
+        <h1>{{ $title }}</h1>
         <div class="col">
             <div class="d-flex float-right justify-content-around">
                 <a href="warga/export_excel" class="btn btn-success btn-md mr-3" target="_blank"><i
