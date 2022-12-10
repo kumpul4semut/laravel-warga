@@ -2,9 +2,8 @@
 
 @section('konten')
     <div class="row my-3">
-        <h1>{{ $title }}</h1>
         <div class="col">
-            <div class="d-flex float-right justify-content-around">
+            <div class="d-flex justify-content-left">
                 <a href="warga/export_excel" class="btn btn-success btn-md mr-3" target="_blank"><i
                         class="fa-solid fa-file-excel"></i> Export</a>
                 <button type="button" class="btn btn-secondary btn-md mr-3" data-toggle="modal" data-target="#import"><i
